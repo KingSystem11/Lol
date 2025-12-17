@@ -13,7 +13,9 @@ import {
   HelpCircle,
   Cpu,
   FileX,
-  Trash2
+  Trash2,
+  Link,
+  Wifi
 } from "lucide-react";
 import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -357,6 +359,10 @@ if __name__ == "__main__":
                     <AlertTriangle className="w-4 h-4" />
                     Troubleshoot
                   </TabsTrigger>
+                  <TabsTrigger value="connect" className="flex items-center gap-2 data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground">
+                    <Link className="w-4 h-4" />
+                    Connect Bot
+                  </TabsTrigger>
                 </TabsList>
                 
                 <Button 
@@ -497,6 +503,66 @@ if __name__ == "__main__":
                           <br/>
                           ❌ <strong>Wrong:</strong> Manually selecting and copying from the code area.
                         </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+
+              <TabsContent value="connect" className="mt-0">
+                <Card className="border-secondary/50 bg-secondary/10">
+                  <CardHeader>
+                    <CardTitle className="text-secondary flex items-center gap-2">
+                      <Wifi className="w-5 h-5" />
+                      Connecting Your Bot
+                    </CardTitle>
+                    <CardDescription className="text-secondary-foreground/80">
+                      Use these values in your bot's <code>config.js</code> or <code>.env</code> file.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <div className="space-y-2">
+                        <Label className="text-secondary-foreground">HOST / IP</Label>
+                        <div className="p-3 bg-black/50 rounded-md border border-secondary/30 font-mono text-sm text-green-400">
+                          {/* We don't know their IP, but usually it's the server IP */}
+                          127.0.0.1
+                        </div>
+                        <p className="text-xs text-muted-foreground">
+                           If bot is on the <strong>SAME server</strong>, use <code>127.0.0.1</code>.
+                           <br/>
+                           If bot is on a <strong>DIFFERENT server</strong>, use your Panel's IP (without port).
+                        </p>
+                      </div>
+
+                      <div className="space-y-2">
+                         <Label className="text-secondary-foreground">PORT</Label>
+                         <div className="p-3 bg-black/50 rounded-md border border-secondary/30 font-mono text-sm text-green-400">
+                           {port}
+                         </div>
+                         <p className="text-xs text-muted-foreground">
+                           Must match the port in the configuration panel.
+                         </p>
+                      </div>
+
+                      <div className="space-y-2 md:col-span-2">
+                        <Label className="text-secondary-foreground">PASSWORD</Label>
+                        <div className="p-3 bg-black/50 rounded-md border border-secondary/30 font-mono text-sm text-green-400">
+                           {password}
+                        </div>
+                        <p className="text-xs text-muted-foreground">
+                           Must match the password in the configuration panel.
+                        </p>
+                      </div>
+
+                      <div className="space-y-2 md:col-span-2">
+                        <Label className="text-secondary-foreground">SECURE / SSL</Label>
+                         <div className="p-3 bg-black/50 rounded-md border border-secondary/30 font-mono text-sm text-green-400">
+                           false
+                         </div>
+                         <p className="text-xs text-muted-foreground">
+                           LavaPy runs on HTTP, so set this to <code>false</code>.
+                         </p>
                       </div>
                     </div>
                   </CardContent>
