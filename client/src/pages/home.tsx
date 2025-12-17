@@ -370,6 +370,15 @@ if __name__ == "__main__":
               </div>
 
               <TabsContent value="python" className="mt-0">
+                <div className="space-y-2 mb-4">
+                  <div className="bg-primary/10 border border-primary/30 p-3 rounded-md flex items-start gap-3">
+                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold text-primary">Copy ONLY this code</p>
+                      <p className="text-xs text-muted-foreground mt-1">Click "Copy Code" below to copy just the Python script. Do not copy the header or description.</p>
+                    </div>
+                  </div>
+                </div>
                 <Card className="border-border/50 bg-[#1d1f21] overflow-hidden shadow-2xl">
                   <ScrollArea className="h-[600px] w-full">
                     <div className="p-4">
@@ -470,6 +479,23 @@ if __name__ == "__main__":
                           3. Name it <code>main.py</code>.
                           <br/>
                           4. Paste the code from the <strong>main.py</strong> tab on this page.
+                        </p>
+                      </div>
+
+                      {/* Error 3: Syntax Error */}
+                      <div className="p-3 bg-purple-500/10 border border-purple-500/20 rounded-md">
+                        <div className="flex gap-2 items-start text-purple-400 font-mono text-xs mb-2">
+                           <Code className="w-4 h-4 shrink-0" />
+                           <span>SyntaxError: invalid syntax</span>
+                        </div>
+                        <p className="text-sm text-foreground font-semibold">Solution: Copy ONLY the code</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          You likely copied text other than the Python code (like the description or header).
+                          <br/>
+                          <br/>
+                          ✅ <strong>Correct:</strong> Use the "Copy Code" button in the <strong>main.py</strong> tab. This copies ONLY the Python script.
+                          <br/>
+                          ❌ <strong>Wrong:</strong> Manually selecting and copying from the code area.
                         </p>
                       </div>
                     </div>
