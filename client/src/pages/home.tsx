@@ -528,11 +528,14 @@ if __name__ == "__main__":
                           {/* We don't know their IP, but usually it's the server IP */}
                           127.0.0.1
                         </div>
-                        <p className="text-xs text-muted-foreground">
-                           If bot is on the <strong>SAME server</strong>, use <code>127.0.0.1</code>.
-                           <br/>
-                           If bot is on a <strong>DIFFERENT server</strong>, use your Panel's IP (without port).
-                        </p>
+                        <div className="text-xs text-muted-foreground space-y-1">
+                           <p>If bot is on the <strong>SAME server</strong>, use <code>127.0.0.1</code>.</p>
+                           <div className="pt-2 border-t border-secondary/20">
+                             <p className="font-semibold text-secondary">Where to find external IP?</p>
+                             <p>Go to your Pterodactyl Panel → <strong>Network</strong> tab.</p>
+                             <p>Look for the <strong>Primary</strong> allocation IP (e.g., <code>142.x.x.x</code>).</p>
+                           </div>
+                        </div>
                       </div>
 
                       <div className="space-y-2">
@@ -540,9 +543,14 @@ if __name__ == "__main__":
                          <div className="p-3 bg-black/50 rounded-md border border-secondary/30 font-mono text-sm text-green-400">
                            {port}
                          </div>
-                         <p className="text-xs text-muted-foreground">
-                           Must match the port in the configuration panel.
-                         </p>
+                         <div className="text-xs text-muted-foreground space-y-1">
+                           <p>Must match the port in the configuration panel.</p>
+                           <div className="pt-2 border-t border-secondary/20">
+                             <p className="font-semibold text-secondary">Where to find available ports?</p>
+                             <p>Go to your Pterodactyl Panel → <strong>Network</strong> tab.</p>
+                             <p>Use one of the ports listed there (e.g., <code>{port}</code>).</p>
+                           </div>
+                         </div>
                       </div>
 
                       <div className="space-y-2 md:col-span-2">
@@ -550,9 +558,10 @@ if __name__ == "__main__":
                         <div className="p-3 bg-black/50 rounded-md border border-secondary/30 font-mono text-sm text-green-400">
                            {password}
                         </div>
-                        <p className="text-xs text-muted-foreground">
-                           Must match the password in the configuration panel.
-                        </p>
+                        <div className="text-xs text-muted-foreground space-y-1">
+                           <p>This is NOT from the panel. It is set by <strong>YOU</strong> right here in this tool.</p>
+                           <p>Make sure this matches what you put in your bot's config.</p>
+                        </div>
                       </div>
 
                       <div className="space-y-2 md:col-span-2">
