@@ -440,35 +440,37 @@ if __name__ == "__main__":
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    <div className="p-4 bg-black/50 rounded-md border border-destructive/30 font-mono text-xs text-red-400">
-                      ERROR: Could not find a version that satisfies the requirement install...
-                    </div>
-                    
                     <div className="space-y-4">
-                      <div className="flex gap-4 items-start">
-                        <div className="bg-destructive/20 p-2 rounded-full mt-1">
-                          <Trash2 className="w-4 h-4 text-destructive" />
+                      {/* Error 1: Requirements */}
+                      <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-md">
+                        <div className="flex gap-2 items-start text-red-400 font-mono text-xs mb-2">
+                           <AlertTriangle className="w-4 h-4 shrink-0" />
+                           <span>ERROR: No matching distribution found for install</span>
                         </div>
-                        <div>
-                          <h4 className="font-semibold text-foreground">Issue: Bad requirements.txt</h4>
-                          <p className="text-sm text-muted-foreground mt-1">
-                            Your server is trying to install packages that don't exist. This usually happens if you put commands like <code>npm install</code> inside <code>requirements.txt</code>.
-                          </p>
-                        </div>
+                        <p className="text-sm text-foreground font-semibold">Solution: Delete requirements.txt</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Go to your <strong>Files</strong> tab and delete <code>requirements.txt</code>. It contains invalid packages.
+                        </p>
                       </div>
 
-                      <div className="flex gap-4 items-start">
-                        <div className="bg-green-500/20 p-2 rounded-full mt-1">
-                          <Check className="w-4 h-4 text-green-500" />
+                      {/* Error 2: Missing File */}
+                      <div className="p-3 bg-orange-500/10 border border-orange-500/20 rounded-md">
+                        <div className="flex gap-2 items-start text-orange-400 font-mono text-xs mb-2">
+                           <FileX className="w-4 h-4 shrink-0" />
+                           <span>python: can't open file 'main.py': [Errno 2] No such file</span>
                         </div>
-                        <div>
-                          <h4 className="font-semibold text-foreground">Solution: Delete it</h4>
-                          <p className="text-sm text-muted-foreground mt-1">
-                            <strong>LavaPy does not need any requirements.</strong>
-                            <br/>
-                            Go to your Files tab and <span className="text-destructive">delete</span> the <code>requirements.txt</code> file completely.
-                          </p>
-                        </div>
+                        <p className="text-sm text-foreground font-semibold">Solution: Create the file</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          You haven't created the script yet!
+                          <br/>
+                          1. Go to <strong>Files</strong> tab.
+                          <br/>
+                          2. Click <strong>New File</strong>.
+                          <br/>
+                          3. Name it <code>main.py</code>.
+                          <br/>
+                          4. Paste the code from the <strong>main.py</strong> tab on this page.
+                        </p>
                       </div>
                     </div>
                   </CardContent>
