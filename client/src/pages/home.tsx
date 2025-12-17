@@ -171,6 +171,11 @@ def run_lavalink():
     java_bin = os.path.abspath("java/bin/java")
     cmd = [java_bin, "-jar", "Lavalink.jar"]
     
+    print("--- 🔗 CONNECTION INFO (Put this in your bot config) ---")
+    print(f"HOST:     127.0.0.1 (or server IP)")
+    print(f"PORT:     {PORT}")
+    print(f"PASSWORD: {PASSWORD}")
+    print("-----------------------------------------------------")
     print(f"🚀 Starting Lavalink on port {PORT}...")
     try:
         subprocess.run(cmd, check=True)
