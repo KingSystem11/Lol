@@ -9,7 +9,9 @@ import {
   Play, 
   AlertTriangle,
   Server,
-  Code
+  Code,
+  HelpCircle,
+  Cpu
 } from "lucide-react";
 import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -19,6 +21,12 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-python";
@@ -290,6 +298,39 @@ if __name__ == "__main__":
                 </div>
               </CardContent>
             </Card>
+
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1" className="border-border/50">
+                <AccordionTrigger className="text-muted-foreground hover:text-primary transition-colors">
+                  <span className="flex items-center gap-2">
+                    <HelpCircle className="w-4 h-4" />
+                    How does this work?
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground space-y-3">
+                  <p>
+                    Pterodactyl "Eggs" (containers) are usually locked to one language. A Python egg doesn't have the <code className="text-primary bg-primary/10 px-1 rounded">java</code> command installed.
+                  </p>
+                  <div className="space-y-2 pl-2 border-l-2 border-primary/20">
+                    <div className="flex gap-2 items-start text-xs">
+                      <Download className="w-3 h-3 mt-1 text-primary" />
+                      <span>The script downloads a <strong>Portable JDK 17</strong> (Zulu) directly into your server files.</span>
+                    </div>
+                    <div className="flex gap-2 items-start text-xs">
+                      <Cpu className="w-3 h-3 mt-1 text-primary" />
+                      <span>It extracts it to a local <code className="text-xs bg-muted px-1 rounded">/java</code> folder.</span>
+                    </div>
+                    <div className="flex gap-2 items-start text-xs">
+                      <Play className="w-3 h-3 mt-1 text-primary" />
+                      <span>It runs Lavalink using <code className="text-xs bg-muted px-1 rounded">./java/bin/java</code> instead of the system java.</span>
+                    </div>
+                  </div>
+                  <p className="text-xs pt-2">
+                    This effectively turns your Python container into a Java container without needing root access or Docker changes.
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </motion.div>
 
           {/* Code Output Panel */}
