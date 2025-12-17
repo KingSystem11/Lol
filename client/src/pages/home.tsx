@@ -380,25 +380,43 @@ if __name__ == "__main__":
                    <CardHeader>
                      <CardTitle>Pterodactyl Configuration</CardTitle>
                      <CardDescription>
-                       Ensure your panel settings match these values.
+                       Keep your existing startup command. Just change the <strong>PY_FILE</strong> variable.
                      </CardDescription>
                    </CardHeader>
                    <CardContent className="space-y-6">
                      <div className="space-y-2">
-                       <Label>Startup Command</Label>
-                       <div className="p-4 bg-black/50 rounded-md border border-border font-mono text-sm text-green-400 break-all">
-                         /usr/local/bin/python /home/container/main.py
+                       <Label>Your Startup Command (Default)</Label>
+                       <div className="p-4 bg-black/50 rounded-md border border-border font-mono text-xs text-muted-foreground break-all whitespace-pre-wrap">
+                         if [[ -d .git ]] && [[ "{`{{AUTO_UPDATE}}`}" == "1" ]]; then git pull; fi; if [[ ! -z "{`{{PY_PACKAGES}}`}" ]]; then pip install -U --prefix .local {`{{PY_PACKAGES}}`}; fi; if [[ -f /home/container/${`{REQUIREMENTS_FILE}`} ]]; then pip install -U --prefix .local -r ${`{REQUIREMENTS_FILE}`}; fi; <span className="text-green-400 font-bold">/usr/local/bin/python /home/container/{`{{PY_FILE}}`}</span>
                        </div>
                        <p className="text-xs text-muted-foreground">
-                         Or whatever your "PY_FILE" variable is set to (e.g., bot.py, app.py).
+                         You do <strong>not</strong> need to change this command.
                        </p>
                      </div>
 
                      <div className="space-y-2">
-                       <Label>PY_FILE Variable</Label>
-                       <div className="p-4 bg-black/50 rounded-md border border-border font-mono text-sm text-green-400">
-                         main.py
+                       <Label>Variable to Change</Label>
+                       <div className="grid gap-2 border border-primary/20 bg-primary/5 p-4 rounded-md">
+                         <div className="flex justify-between items-center">
+                           <span className="font-mono text-sm">PY_FILE</span>
+                           <span className="font-mono text-sm text-green-400 font-bold">main.py</span>
+                         </div>
+                         <p className="text-xs text-muted-foreground">
+                           In your "Startup" tab, find the <code>PY_FILE</code> variable and set it to the name of the script you created (e.g., <code>main.py</code>).
+                         </p>
                        </div>
+                     </div>
+                     
+                     <div className="rounded-md bg-blue-500/10 border border-blue-500/20 p-4">
+                        <h4 className="text-sm font-semibold text-blue-400 flex items-center gap-2 mb-2">
+                          <Check className="w-4 h-4" />
+                          Logic Check
+                        </h4>
+                        <p className="text-xs text-blue-300/80">
+                          Your panel runs <strong>Python</strong> → Python downloads <strong>Java</strong> → Python runs <strong>Lavalink</strong>.
+                          <br />
+                          To the server, it looks like a normal Python bot!
+                        </p>
                      </div>
                    </CardContent>
                  </Card>
