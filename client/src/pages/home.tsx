@@ -11,7 +11,9 @@ import {
   Server,
   Code,
   HelpCircle,
-  Cpu
+  Cpu,
+  FileX,
+  Trash2
 } from "lucide-react";
 import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -351,6 +353,10 @@ if __name__ == "__main__":
                     <Server className="w-4 h-4" />
                     Startup Command
                   </TabsTrigger>
+                  <TabsTrigger value="troubleshoot" className="flex items-center gap-2 data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground">
+                    <AlertTriangle className="w-4 h-4" />
+                    Troubleshoot
+                  </TabsTrigger>
                 </TabsList>
                 
                 <Button 
@@ -420,6 +426,53 @@ if __name__ == "__main__":
                      </div>
                    </CardContent>
                  </Card>
+              </TabsContent>
+
+              <TabsContent value="troubleshoot" className="mt-0">
+                <Card className="border-destructive/50 bg-destructive/10">
+                  <CardHeader>
+                    <CardTitle className="text-destructive flex items-center gap-2">
+                      <FileX className="w-5 h-5" />
+                      Fixing "No matching distribution" Error
+                    </CardTitle>
+                    <CardDescription className="text-destructive-foreground/80">
+                      If you see errors like <code>Collecting npm</code> or <code>ERROR: No matching distribution found for install</code>, check this.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div className="p-4 bg-black/50 rounded-md border border-destructive/30 font-mono text-xs text-red-400">
+                      ERROR: Could not find a version that satisfies the requirement install...
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <div className="flex gap-4 items-start">
+                        <div className="bg-destructive/20 p-2 rounded-full mt-1">
+                          <Trash2 className="w-4 h-4 text-destructive" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-foreground">Issue: Bad requirements.txt</h4>
+                          <p className="text-sm text-muted-foreground mt-1">
+                            Your server is trying to install packages that don't exist. This usually happens if you put commands like <code>npm install</code> inside <code>requirements.txt</code>.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-4 items-start">
+                        <div className="bg-green-500/20 p-2 rounded-full mt-1">
+                          <Check className="w-4 h-4 text-green-500" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-foreground">Solution: Delete it</h4>
+                          <p className="text-sm text-muted-foreground mt-1">
+                            <strong>LavaPy does not need any requirements.</strong>
+                            <br/>
+                            Go to your Files tab and <span className="text-destructive">delete</span> the <code>requirements.txt</code> file completely.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </TabsContent>
             </Tabs>
           </motion.div>
